@@ -52,7 +52,11 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 0 clamp(20px, 4vw, 40px);
+    }
+
+    html, body {
+      overflow-x: hidden;
     }
 
     /* Navigation */
@@ -634,9 +638,6 @@
 
     /* Mobile */
     @media (max-width: 860px) {
-      .container {
-        padding: 0 24px;
-      }
 
       .hero {
         padding: 48px 0 56px;
@@ -778,7 +779,7 @@
           <p class="lane-desc">Novela de ficción histórica ambientada en la España de Posguerra. Espionaje y realismo sin filtros.</p>
           <div class="lane-links">
             <a href="https://www.amazon.es/dp/8409615800" target="_blank" rel="noopener" class="btn">Dados Sangrientos</a>
-            <a href="https://vazzdice.substack.com" target="_blank" rel="noopener" class="btn btn-secondary">Newsletter Literaria</a>
+            <a href="https://vazzdice.substack.com" target="_blank" rel="noopener" class="btn btn-secondary">Newsletter</a>
           </div>
         </article>
       </div>
