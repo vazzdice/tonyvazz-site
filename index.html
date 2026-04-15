@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tony Vazz — Experto en Marketing. Autor.</title>
+  <meta name="description" content="Líder de marketing con más de 10 años de experiencia. Construyo negocios con inteligencia artificial y escribo novelas de ficción histórica." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF8;
+      --text: #0A0A0A;
+      --text-secondary: #555550;
+      --accent: #8B0000;
+      --border: #E8E8E4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Thin red line at top of viewport */
+    .top-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--accent);
+      z-index: 1000;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 2px;
+      background-color: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 900;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo-dot {
+      color: var(--accent);
+    }
+
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 36px;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 2px;
+      width: 20px;
+      margin-left: auto;
+      background-color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger span:nth-child(2) {
+      width: 14px;
+    }
+
+    /* Menu overlay + panel */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(10, 10, 10, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1100;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 420px;
+      max-width: 90vw;
+      background-color: var(--bg);
+      border-left: 2px solid var(--accent);
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      z-index: 1200;
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-panel.open {
+      transform: translateX(0);
+    }
+
+    .menu-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      color: var(--text);
+      align-self: flex-end;
+      padding: 8px;
+      font-weight: 400;
+    }
+
+    .menu-links {
+      list-style: none;
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .menu-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      transition: color 0.2s ease;
+    }
+
+    .menu-links a:hover {
+      color: var(--accent);
+    }
+
+    .menu-links a.menu-cta {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 96px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-label {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .hero-label .dot {
+      color: var(--accent);
+      margin-right: 8px;
+    }
+
+    .hero h1 {
+      font-size: clamp(56px, 8vw, 96px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 40px;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+      align-items: center;
+    }
+
+    /* Button system with red-sweep hover */
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 26px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--text);
+      border-radius: 6px;
+      background-color: var(--text);
+      color: var(--bg);
+      overflow: hidden;
+      z-index: 0;
+      width: auto;
+      white-space: nowrap;
+      transition: border-radius 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+                  color 0.4s ease,
+                  border-color 0.4s ease;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      z-index: -1;
+    }
+
+    .btn:hover {
+      border-radius: 999px;
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn:hover::before {
+      transform: scaleX(1);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* Hero photo */
+    .hero-photo {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background-color: var(--border);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(8%) contrast(1.02);
+    }
+
+    /* Trust row below hero */
+    .trust-row {
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+
+    .trust-item strong {
+      color: var(--text);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    /* Section base */
+    section {
+      padding: 120px 0;
+    }
+
+    .section-header {
+      margin-bottom: 72px;
+      max-width: 720px;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Services / two lanes */
+    #services {
+      background-color: var(--bg);
+    }
+
+    .lanes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .lane-card {
+      background-color: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .lane-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px -30px rgba(10, 10, 10, 0.15);
+    }
+
+    .lane-label {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .lane-title {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .lane-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      flex-grow: 1;
+    }
+
+    .lane-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 12px;
+    }
+
+    /* Quote section */
+    .quote-section {
+      background-color: #fff;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quote-block {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 0 24px 48px;
+      border-left: 3px solid var(--accent);
+      position: relative;
+    }
+
+    .quote-mark {
+      font-family: 'Instrument Serif', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: var(--accent);
+      position: absolute;
+      top: -20px;
+      left: 48px;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    .quote-text {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(26px, 3.2vw, 40px);
+      line-height: 1.35;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      position: relative;
+    }
+
+    .quote-attribution {
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .quote-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background-color: var(--border);
+    }
+
+    .quote-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .quote-name {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+
+    .quote-role {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Media section */
+    .media-email-link {
+      display: inline-block;
+      margin-top: 28px;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 4px;
+      transition: color 0.2s ease;
+    }
+
+    .media-email-link:hover {
+      color: var(--accent);
+    }
+
+    /* Newsletter CTA */
+    .newsletter {
+      background-color: var(--text);
+      color: var(--bg);
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      color: var(--bg);
+      margin-bottom: 20px;
+    }
+
+    .newsletter-desc {
+      font-size: 18px;
+      color: rgba(250, 250, 248, 0.75);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.55;
+    }
+
+    .newsletter .btn {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .newsletter .btn::before {
+      background-color: var(--bg);
+    }
+
+    .newsletter .btn:hover {
+      color: var(--text);
+      border-color: var(--bg);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 80px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand .dot {
+      color: var(--accent);
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Fade-in animation on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile */
+    @media (max-width: 860px) {
+      .container {
+        padding: 0 24px;
+      }
+
+      .hero {
+        padding: 48px 0 56px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-photo {
+        order: -1;
+        aspect-ratio: 1 / 1;
+        max-height: 420px;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .lanes {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .lane-card {
+        padding: 36px 28px;
+      }
+
+      .media-email-link {
+        font-size: 18px;
+      }
+
+      .quote-block {
+        padding-left: 32px;
+      }
+
+      .quote-mark {
+        left: 32px;
+        font-size: 84px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      .hero-buttons {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .trust-row {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-line"></div>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="/" class="logo">TONY VAZZ<span class="logo-dot">.</span></a>
+      <button class="hamburger" aria-label="Abrir menú" id="menuOpen">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <aside class="menu-panel" id="menuPanel" aria-hidden="true">
+    <button class="menu-close" aria-label="Cerrar menú" id="menuClose">Cerrar</button>
+    <ul class="menu-links">
+      <li><a href="https://tecnato.ai" target="_blank" rel="noopener">Tecnato</a></li>
+      <li><a href="https://dadossangrientos.com" target="_blank" rel="noopener">Ficción</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="/about.html">Sobre mí</a></li>
+      <li><a href="https://tecnato.ai" target="_blank" rel="noopener" class="menu-cta">Reservar sesión</a></li>
+    </ul>
+  </aside>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text fade-in">
+          <span class="hero-label"><span class="dot">●</span>Experto en Marketing. Autor.</span>
+          <h1>Tony Vazz</h1>
+          <p class="hero-subtitle">Líder de marketing con más de 10 años de experiencia. Construyo negocios con inteligencia artificial y escribo novelas de ficción histórica.</p>
+          <div class="hero-buttons">
+            <a href="#services" class="btn">Ver servicios</a>
+            <a href="/about.html" class="btn btn-secondary">Conoce mi historia</a>
+          </div>
+          <div class="trust-row">
+            <div class="trust-item"><strong>10+</strong> años en tech</div>
+            <div class="trust-item"><strong>2</strong> adquisiciones · <strong>$250M+</strong></div>
+            <div class="trust-item"><strong>1</strong> novela publicada</div>
+          </div>
+        </div>
+        <div class="hero-photo fade-in">
+          <img src="tony-vazz.jpg" alt="Tony Vazz" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Qué hago</h2>
+      </div>
+      <div class="lanes">
+        <article class="lane-card fade-in">
+          <span class="lane-label">Consultoría</span>
+          <h3 class="lane-title">Tecnato — IA para negocios</h3>
+          <p class="lane-desc">Consultoría práctica de IA para emprendedores. Sesiones donde montamos tu sistema juntos. Newsletter semanal con herramientas, workflows y estrategias.</p>
+          <div class="lane-links">
+            <a href="https://tecnato.ai" target="_blank" rel="noopener" class="btn">Reservar sesión</a>
+            <a href="https://substack.com/@tonyvazz" target="_blank" rel="noopener" class="btn btn-secondary">Leer Tecnato</a>
+          </div>
+        </article>
+        <article class="lane-card fade-in">
+          <span class="lane-label">Autor</span>
+          <h3 class="lane-title">Dados Sangrientos</h3>
+          <p class="lane-desc">Novela de ficción histórica ambientada en la España de Posguerra. Espionaje y realismo sin filtros.</p>
+          <div class="lane-links">
+            <a href="https://dadossangrientos.com" target="_blank" rel="noopener" class="btn">Dados Sangrientos</a>
+            <a href="https://vazzdice.substack.com" target="_blank" rel="noopener" class="btn btn-secondary">Newsletter Literaria</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="container">
+      <blockquote class="quote-block fade-in">
+        <span class="quote-mark">&ldquo;</span>
+        <p class="quote-text">Llevo más de una década liderando marketing en startups, incluyendo dos adquisiciones por más de $250M. Ahora construyo Tecnato en solitario, con la IA como mi único equipo, y en paralelo escribo ficción histórica. Documento cómo lo hago en mi newsletter.</p>
+        <div class="quote-attribution">
+          <div class="quote-avatar"><img src="tony-pfp.jpg" alt="Tony Vazz" /></div>
+          <div>
+            <div class="quote-name">Tony Vazz</div>
+            <div class="quote-role">Fundador de Tecnato · Autor de Dados Sangrientos</div>
+          </div>
+        </div>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="media">
+    <div class="container">
+      <div class="fade-in" style="max-width: 780px;">
+        <h2 style="color: var(--accent);">Prensa y Colaboraciones</h2>
+        <p class="section-desc">Podcasts, entrevistas, conferencias y colaboraciones de contenido. Si quieres que participe en tu programa o evento, hablemos.</p>
+        <a href="mailto:tony@tecnato.ai" class="media-email-link">tony@tecnato.ai</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div class="container fade-in">
+      <h2>Suscríbete</h2>
+      <p class="newsletter-desc">Herramientas, workflows y estrategias para emprendedores.</p>
+      <a href="https://substack.com/@tonyvazz" target="_blank" rel="noopener" class="btn">Suscribirme</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">TONY VAZZ<span class="dot">.</span></div>
+          <p class="footer-tagline">Líder de marketing construyendo negocios con IA y escribiendo ficción histórica.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="https://tecnato.ai" target="_blank" rel="noopener">Consultoría</a></li>
+            <li><a href="https://dadossangrientos.com" target="_blank" rel="noopener">Dados Sangrientos</a></li>
+            <li><a href="/about.html">Sobre mí</a></li>
+            <li><a href="#media">Media</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletters</h4>
+          <ul>
+            <li><a href="https://substack.com/@tonyvazz" target="_blank" rel="noopener">Tecnato</a></li>
+            <li><a href="https://vazzdice.substack.com" target="_blank" rel="noopener">Vazz Dice</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Social</h4>
+          <ul>
+            <li><a href="https://x.com/tonyvazz" target="_blank" rel="noopener">X</a></li>
+            <li><a href="https://youtube.com/@tonyvazz" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://amazon.com" target="_blank" rel="noopener">Amazon</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 Tony Vazz. Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    const menuOpen = document.getElementById('menuOpen');
+    const menuClose = document.getElementById('menuClose');
+    const menuPanel = document.getElementById('menuPanel');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function openMenu() {
+      menuPanel.classList.add('open');
+      menuOverlay.classList.add('open');
+      menuPanel.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      menuPanel.classList.remove('open');
+      menuOverlay.classList.remove('open');
+      menuPanel.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    menuOpen.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.menu-links a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Escape key closes menu
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // Fade-in on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
