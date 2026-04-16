@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Tony Vazz</title>
+  <meta name="description" content="Más de una década liderando marketing en startups tecnológicas. Ahora emprendiendo en solitario con inteligencia artificial y escribiendo ficción histórica." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF8;
+      --text: #0A0A0A;
+      --text-secondary: #555550;
+      --accent: #8B0000;
+      --border: #E8E8E4;
+      --accent-soft: rgba(139, 0, 0, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .top-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--accent);
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: clamp(20px, 4vw, 40px);
+      padding-right: clamp(20px, 4vw, 40px);
+    }
+
+    nav {
+      position: sticky;
+      top: 2px;
+      background-color: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 900;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo-dot {
+      color: var(--accent);
+    }
+
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 36px;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 2px;
+      width: 20px;
+      margin-left: auto;
+      background-color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger span:nth-child(2) {
+      width: 14px;
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(10, 10, 10, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1100;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 420px;
+      max-width: 90vw;
+      background-color: var(--bg);
+      border-left: 2px solid var(--accent);
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      z-index: 1200;
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-panel.open {
+      transform: translateX(0);
+    }
+
+    .menu-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      color: var(--text);
+      align-self: flex-end;
+      padding: 8px;
+      font-weight: 400;
+    }
+
+    .menu-links {
+      list-style: none;
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .menu-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      transition: color 0.2s ease;
+    }
+
+    .menu-links a:hover {
+      color: var(--accent);
+    }
+
+    .menu-links a.menu-cta {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 96px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 0;
+      max-width: 520px;
+    }
+
+    .hero-photo {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background-color: var(--border);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(8%) contrast(1.02);
+    }
+
+    /* Section base */
+    section {
+      padding: 96px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-body {
+      max-width: 780px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+
+    .section-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background-color: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 0;
+    }
+
+    .section-body p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .section-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Education list */
+    .edu-list {
+      list-style: none;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .edu-item {
+      border-left: 3px solid var(--accent);
+      padding-left: 24px;
+    }
+
+    .edu-degree {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .edu-school {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Experience list */
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .exp-item {
+      border-left: 3px solid var(--accent);
+      padding-left: 24px;
+    }
+
+    .exp-role {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .exp-company {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .exp-desc {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* Key strengths */
+    .strengths-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 20px;
+      margin-top: 36px;
+    }
+
+    .strengths-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 48px;
+    }
+
+    .strengths-list li {
+      font-size: 16px;
+      color: var(--text);
+      padding-left: 22px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .strengths-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--accent);
+    }
+
+    /* Contact section (closing) */
+    .contact {
+      background-color: var(--text);
+      color: var(--bg);
+      border-top: 0;
+      text-align: center;
+    }
+
+    .contact-title {
+      color: var(--bg);
+      margin-bottom: 24px;
+    }
+
+    .contact p {
+      font-size: 18px;
+      color: rgba(250, 250, 248, 0.75);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.55;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 500;
+      color: var(--bg);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .contact-email:hover {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 80px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand .dot {
+      color: var(--accent);
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile */
+    @media (max-width: 860px) {
+      .hero {
+        padding: 48px 0 56px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-photo {
+        order: -1;
+        aspect-ratio: 1 / 1;
+        max-height: 420px;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .section-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+      }
+
+      .section-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .strengths-list {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-line"></div>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="/" class="logo">TONY VAZZ<span class="logo-dot">.</span></a>
+      <button class="hamburger" aria-label="Abrir menú" id="menuOpen">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <aside class="menu-panel" id="menuPanel" aria-hidden="true">
+    <button class="menu-close" aria-label="Cerrar menú" id="menuClose">Cerrar</button>
+    <ul class="menu-links">
+      <li><a href="https://tecnato.ai" target="_blank" rel="noopener">Tecnato</a></li>
+      <li><a href="https://dadossangrientos.com" target="_blank" rel="noopener">Ficción</a></li>
+      <li><a href="/#media">Media</a></li>
+      <li><a href="/about.html">Sobre mí</a></li>
+      <li><a href="https://tecnato.ai" target="_blank" rel="noopener" class="menu-cta">Reservar sesión</a></li>
+    </ul>
+  </aside>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text fade-in">
+          <h1>Sobre Tony Vazz</h1>
+          <p class="hero-subtitle">Más de una década liderando marketing en startups tecnológicas. Ahora emprendo en solitario con inteligencia artificial, mientras escribo ficción histórica en paralelo.</p>
+        </div>
+        <div class="hero-photo fade-in">
+          <img src="tony-vazz.jpg" alt="Tony Vazz" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="educacion">
+    <div class="container">
+      <div class="section-body fade-in">
+        <div class="section-heading">
+          <div class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+          </div>
+          <h2 class="section-title">Formación académica</h2>
+        </div>
+        <ul class="edu-list">
+          <li class="edu-item">
+            <div class="edu-degree">Máster en Marketing Digital y Community Management</div>
+            <div class="edu-school">ESDEN Business School · Cambridge University (2012)</div>
+          </li>
+          <li class="edu-item">
+            <div class="edu-degree">Licenciatura + Máster en Publicidad y Relaciones Públicas</div>
+            <div class="edu-school">Universidad de Sevilla (2011)</div>
+          </li>
+        </ul>
+        <p>Durante mi etapa universitaria ya fui consciente de que el mundo se estaba digitalizando, y que mi futuro profesional estaría dominado por pantallas y datos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <div class="container">
+      <div class="section-body fade-in">
+        <div class="section-heading">
+          <div class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+          </div>
+          <h2 class="section-title">Experiencia profesional</h2>
+        </div>
+        <ul class="exp-list">
+          <li class="exp-item">
+            <div class="exp-role">Director de Marketing</div>
+            <div class="exp-company">Nostra (Mayo 2022 a Noviembre 2025)</div>
+            <p class="exp-desc">Construí y lideré la función de marketing en una empresa tecnológica de alto crecimiento, manteniendo una posición de liderazgo en el mercado durante más de dos años.</p>
+          </li>
+          <li class="exp-item">
+            <div class="exp-role">Director de Marketing</div>
+            <div class="exp-company">Polygon (Octubre 2020 a Mayo 2022)</div>
+            <p class="exp-desc">Lideré las comunicaciones en una empresa de infraestructura tecnológica a lo largo de una adquisición de 250 millones de dólares.</p>
+          </li>
+          <li class="exp-item">
+            <div class="exp-role">Encargado de Marketing</div>
+            <div class="exp-company">Catalyst (Junio 2018 a Febrero 2020)</div>
+            <p class="exp-desc">Monté el marketing multicanal de una startup tecnológica con sede en Londres, creciendo los leads orgánicos y levantando una comunidad de desarrolladores a través de patrocinios de hackathones.</p>
+          </li>
+          <li class="exp-item">
+            <div class="exp-role">Asistente de Marketing</div>
+            <div class="exp-company">Southbank Investment Research (Abril 2017 a Junio 2018)</div>
+            <p class="exp-desc">Responsable del crecimiento del tráfico orgánico de búsqueda y de la optimización de conversiones de generación de leads, apoyando los objetivos de captación de nuevos afiliados y los ingresos del ciclo de vida del cliente.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="expertise">
+    <div class="container">
+      <div class="section-body fade-in">
+        <div class="section-heading">
+          <div class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h2 class="section-title">Especialista en marketing</h2>
+        </div>
+        <p>Mi ventaja profesional viene de la combinación de dos cosas: una obsesión constante por aprender sobre nuevas tecnologías, y la disciplina de implementar innovación puntera antes de que se convierta en consenso. Llegar pronto, experimentar con herramientas, optimizar procesos.</p>
+        <div class="strengths-label">Fortalezas Clave</div>
+        <ul class="strengths-list">
+          <li>Posicionamiento y narrativa de producto</li>
+          <li>Crecimiento de comunidades</li>
+          <li>Automatización de procesos</li>
+          <li>Gestión de presupuestos y equipos</li>
+          <li>Creación de contenido</li>
+          <li>Eventos y representación de marca</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="dados">
+    <div class="container">
+      <div class="section-body fade-in">
+        <div class="section-heading">
+          <div class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+          </div>
+          <h2 class="section-title">Dados Sangrientos</h2>
+        </div>
+        <p>En paralelo a mi carrera profesional, escribí y autopubliqué una novela de ficción histórica (250.000 palabras).</p>
+        <p>Dados Sangrientos está ambientada en la España de posguerra, construida sobre los retazos de historias familiares que mi abuela no pudo escribir. Realismo sin filtros, espionaje y la Andalucía profunda contada desde dentro.</p>
+        <p>Autopublicar en Amazon fue una decisión deliberada: quería aprender cómo funciona el proceso de publicación, así como mantener el control editorial y construir el libro a mi ritmo, sin pasar por los filtros del sector tradicional.</p>
+        <p>Actualmente, acabo de terminar el manuscrito de una segunda novela. Esta vez, pretendo publicarla a través de una editorial tradicional.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contenido">
+    <div class="container">
+      <div class="section-body fade-in">
+        <div class="section-heading">
+          <div class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/><path d="m22 8-6 4 6 4V8Z"/></svg>
+          </div>
+          <h2 class="section-title">Creación de contenido y educación</h2>
+        </div>
+        <p>Desde 2022 creo contenido en vídeo en YouTube y escribo regularmente en Medium y Substack bajo distintos nombres. Mis ejes son el uso práctico de la tecnología en el día a día, la privacidad digital y, en los últimos años, guías sobre inteligencia artificial para emprendedores y perfiles no técnicos. La misma lógica que aplico en mi trabajo profesional (llegar pronto, experimentar con herramientas, explicar claro) es la que aplico en mis canales propios.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tecnato">
+    <div class="container">
+      <div class="section-body fade-in">
+        <div class="section-heading">
+          <div class="section-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+          </div>
+          <h2 class="section-title">Consultoría Tecnato</h2>
+        </div>
+        <p>Tecnato nació de una convicción: los emprendedores hispanohablantes necesitan acceso práctico a la inteligencia artificial, no otro hilo de X con prompts genéricos.</p>
+        <p>Fundé Tecnato en solitario, con IA como mi único equipo, y ofrezco consultoría individual donde montamos el sistema del cliente en la misma sesión. El newsletter semanal documenta herramientas, flujos de trabajo y estrategias que yo mismo utilizo, con el rigor que viene de una década liderando marketing en startups.</p>
+        <p>Al mismo tiempo, estoy reagrupando todo bajo la marca personal Tony Vazz.</p>
+        <p>La consultoría de IA (Tecnato), mis novelas (Dados Sangrientos y las que vienen) y la creación de contenido son expresiones distintas de la misma persona.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="container fade-in">
+      <h2 class="section-title contact-title">Hablemos</h2>
+      <p>Podcasts, entrevistas, conferencias y colaboraciones de contenido. Si quieres que participe en tu programa o evento, hablemos.</p>
+      <a href="mailto:tony@tecnato.ai" class="contact-email">tony@tecnato.ai</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">TONY VAZZ<span class="dot">.</span></div>
+          <p class="footer-tagline">Líder de marketing construyendo negocios con IA y escribiendo ficción histórica.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="https://tecnato.ai" target="_blank" rel="noopener">Consultoría</a></li>
+            <li><a href="https://dadossangrientos.com" target="_blank" rel="noopener">Dados Sangrientos</a></li>
+            <li><a href="/about.html">Sobre mí</a></li>
+            <li><a href="/#media">Media</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletters</h4>
+          <ul>
+            <li><a href="https://substack.com/@tonyvazz" target="_blank" rel="noopener">Tecnato</a></li>
+            <li><a href="https://vazzdice.substack.com" target="_blank" rel="noopener">Vazz Dice</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Social</h4>
+          <ul>
+            <li><a href="https://x.com/tonyvazz" target="_blank" rel="noopener">X</a></li>
+            <li><a href="https://youtube.com/@tonyvazz" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://amazon.com" target="_blank" rel="noopener">Amazon</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 Tony Vazz. Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuOpen = document.getElementById('menuOpen');
+    const menuClose = document.getElementById('menuClose');
+    const menuPanel = document.getElementById('menuPanel');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function openMenu() {
+      menuPanel.classList.add('open');
+      menuOverlay.classList.add('open');
+      menuPanel.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      menuPanel.classList.remove('open');
+      menuOverlay.classList.remove('open');
+      menuPanel.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    menuOpen.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('.menu-links a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
