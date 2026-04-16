@@ -23,6 +23,10 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      overflow-x: hidden;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -51,12 +55,10 @@
     /* Container */
     .container {
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 clamp(20px, 4vw, 40px);
-    }
-
-    html, body {
-      overflow-x: hidden;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: clamp(20px, 4vw, 40px);
+      padding-right: clamp(20px, 4vw, 40px);
     }
 
     /* Navigation */
@@ -374,10 +376,6 @@
     }
 
     /* Services / two lanes */
-    #services {
-      background-color: var(--bg);
-    }
-
     .lanes {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -639,7 +637,6 @@
 
     /* Mobile */
     @media (max-width: 860px) {
-
       .hero {
         padding: 48px 0 56px;
       }
@@ -666,10 +663,6 @@
 
       .lane-card {
         padding: 36px 28px;
-      }
-
-      .media-email-link {
-        font-size: 18px;
       }
 
       .quote-block {
@@ -700,6 +693,10 @@
 
       .trust-row {
         gap: 20px;
+      }
+
+      .media-email-link {
+        font-size: 18px;
       }
     }
 
@@ -779,8 +776,8 @@
           <h3 class="lane-title">Dados Sangrientos</h3>
           <p class="lane-desc">Novela de ficción histórica ambientada en la España de Posguerra. Espionaje y realismo sin filtros.</p>
           <div class="lane-links">
-            <a href="https://www.amazon.es/dp/8409615800" target="_blank" rel="noopener" class="btn">Dados Sangrientos</a>
-            <a href="https://vazzdice.substack.com" target="_blank" rel="noopener" class="btn btn-secondary">Newsletter</a>
+            <a href="https://dadossangrientos.com" target="_blank" rel="noopener" class="btn">Dados Sangrientos</a>
+            <a href="https://vazzdice.substack.com" target="_blank" rel="noopener" class="btn btn-secondary">Vazz Dice</a>
           </div>
         </article>
       </div>
@@ -832,7 +829,7 @@
           <h4>Enlaces</h4>
           <ul>
             <li><a href="https://tecnato.ai" target="_blank" rel="noopener">Consultoría</a></li>
-            <li><a href="https://www.amazon.es/dp/8409615800" target="_blank" rel="noopener">Dados Sangrientos</a></li>
+            <li><a href="https://dadossangrientos.com" target="_blank" rel="noopener">Dados Sangrientos</a></li>
             <li><a href="/about.html">Sobre mí</a></li>
             <li><a href="#media">Media</a></li>
           </ul>
@@ -847,9 +844,9 @@
         <div class="footer-col">
           <h4>Social</h4>
           <ul>
-            <li><a href="https://x.com/vazzdice" target="_blank" rel="noopener">X</a></li>
+            <li><a href="https://x.com/tonyvazz" target="_blank" rel="noopener">X</a></li>
             <li><a href="https://youtube.com/@tonyvazz" target="_blank" rel="noopener">YouTube</a></li>
-            <li><a href="https://www.amazon.es/dp/8409615800" target="_blank" rel="noopener">Amazon</a></li>
+            <li><a href="https://amazon.com" target="_blank" rel="noopener">Amazon</a></li>
           </ul>
         </div>
       </div>
