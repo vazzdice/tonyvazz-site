@@ -1,0 +1,33 @@
+# tonyvazz.com
+# Welcome, robots and AI crawlers
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://tonyvazz.com/sitemap.xml
+
+# AI Crawlers - explicitly welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
